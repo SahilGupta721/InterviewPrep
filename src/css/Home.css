@@ -72,7 +72,7 @@
   #home_intro>div{
     font-weight: lighter;
     font-size: 450px;
-    position: fixed;
+    position:fixed ;
     margin-right: 20px;
     font-size: 3em;
   }
@@ -80,4 +80,12 @@
 #button_container{
   display: flex;
   justify-content: center;
+}
+/* making responsive for mobile view */
+@media (max-width: 443px) {
+  #header {
+    margin: auto;
+    left:40px;
+  }
+  
 }

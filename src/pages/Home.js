@@ -25,7 +25,7 @@ function Home(){
                 </nav>
                 
             </section>
-            <div id="home_intro"><div>Welcome to InterviewPrep</div>
+            <div id="home_intro"><div id="header">Welcome to InterviewPrep</div>
             </div>
             <div className='getstarted_btn'>
                 <div id="button_container">
