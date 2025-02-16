@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Roboto:wght@100..900&display=swap');
+*{
+  margin:auto;
+}
+.interview_video_container{
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  
+  width: 100%;
+}
+#interview_video>video{
+  object-fit: cover;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 350px;
+}
+#interview_video_container{
+  height: 450px;
+}
+#dropbox_feedback{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+#feedback_content>h1{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+
+}
+#feedback_content> button{
+  padding: 10px;
+  margin-left: 10px;
+  background-color: lightgreen;
+  border: 4px solid lightgreen;
+}
+#feedback{
+  margin-top:140px;
+  padding: 30px;
+  text-align: center;
+}

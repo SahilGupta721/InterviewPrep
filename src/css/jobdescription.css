@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Roboto:wght@100..900&display=swap');
+
+#job_full_content{
+  width: 100%;
+  margin-top:150px;
+}
+#job-description-container{
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin:auto;
+}
+#job-description-heading  {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  margin-bottom: 12px;
+}
+
+#job_des_elements>textarea{
+  width:  100%;
+  height:200px;
+  padding: 20px;
+}
+#job_des_elements{
+  padding:0px 20px 0 20px;
+}
+.job_des_buttons>button{
+  display: inline-block;
+  width: 100%;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: lightgreen;
+  border: 4px solid lightgreen;
+
+  
+}
+#des_video_container{
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+      
+}
+#des_video_container>video{
+  object-fit: cover;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  filter: blur(4px);
+  
+}
+#job_ques, h2{
+  text-align: center;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:bolder;
+}
+#job_ques>h2{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+}
+#job_ques{
+  padding: 20px;
+}
+#question_bank{
+  width: 50%;
+  margin: auto;
+}
+#question_bank {
+  text-align: left;
+  padding: 25px;
+  backdrop-filter: blur(20px);
+  list-style-type: none;
+
+}
