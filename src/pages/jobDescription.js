@@ -22,7 +22,7 @@ const JobDescription = () => {
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
       const result = await model.generateContent(
         `Generate 5 interview questions based on the following job description:\n\n${jobDescription}`
       );
