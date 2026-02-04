@@ -34,7 +34,7 @@ class JobRequest(BaseModel):
 @app.post("/generate-questions")
 def generate_questions(req: JobRequest):
     try:
-        model = genai.GenerativeModel("gemini-2.5-flash-lite")
+        model = genai.GenerativeModel("gemini-2.5-flash")
 
         prompt = f"""
 Generate exactly 5 interview questions.
