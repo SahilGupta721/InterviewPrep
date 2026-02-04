@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
@@ -8,10 +7,8 @@ import interview_video from "../videos/interview.mp4";
 
 const Interview = () => {
   const [videoFile, setVideoFile] = useState(null);
-  const [resumeFile, setResumeFile] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   // Handle video file selection
   const handleFileChange = (e) => {
@@ -30,11 +27,6 @@ const Interview = () => {
     setVideoFile(file);
   };
 
-  // Handle resume file selection
-  const handleResumeChange = (e) => {
-    const file = e.target.files[0];
-    if (file) setResumeFile(file);
-  };
 
   const handleSubmit = async () => {
     if (!videoFile) {
