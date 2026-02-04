@@ -117,7 +117,6 @@ const Interview = () => {
               <h1 className="header">Interview Analysis</h1>
 
               <input type="file" accept="video/*" onChange={handleFileChange} disabled={loading} />
-              <input type="file" accept=".pdf,.doc,.docx" onChange={handleResumeChange} disabled={loading} />
 
               <button onClick={handleSubmit} disabled={loading || !videoFile}>
                 {loading ? 'Submitting...' : 'Submit Video'}
