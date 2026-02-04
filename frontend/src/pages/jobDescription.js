@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import '../css/jobdescription.css';
 import job_des_video from '../videos/interview.mp4'
 import { NavLink } from "react-router-dom";
@@ -10,7 +9,6 @@ const JobDescription = () => {
   const [generatedQuestions, setGeneratedQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const apiKey = process.env.REACT_APP_GEMINI_KEY;
 
   const getResponseForGivenPrompt = async () => {
     if (!jobDescription.trim()) {
@@ -21,27 +19,31 @@ const JobDescription = () => {
     setLoading(true);
 
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-      const result = await model.generateContent(
-        `Generate 5 interview questions based on the following job description:\n\n${jobDescription}`
+      const response = await fetch(
+        'http://localhost:8000/generate-questions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            job_description: jobDescription,
+          }),
+        }
       );
 
-      const text = result.response.text();
-      const extractedQuestions = text
-        .split('\n')
-        .filter((line) => line.trim().match(/^\d+\./)) // 
-        .map((line) => line.replace(/^\d+\.\s*/, '').trim());
-
-      if (extractedQuestions.length === 5) {
-        setGeneratedQuestions(extractedQuestions);
-      } else {
-        alert('Unexpected format for generated questions. Check the returned value in the console.');
-
+      if (!response.ok) {
+        throw new Error('Failed to generate questions');
       }
+
+      const data = await response.json();
+
+      // backend already guarantees exactly 5 questions
+      setGeneratedQuestions(data.questions);
+
     } catch (error) {
-      console.error('Error fetching Gemini response:', error);
-      alert(`Error fetching Gemini response: ${error.message}`);
+      console.error('Error:', error);
+      alert('Error generating questions');
     } finally {
       setLoading(false);
     }

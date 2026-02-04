@@ -14,14 +14,12 @@ if not API_KEY:
 
 genai.configure(api_key=API_KEY)
 
-class JobRequest(BaseModel):
-    job_description: str
 app = FastAPI()
 
-# CORS (allow Vercel later with *)
+# CORS (allow frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["https://interview-prep-dusky.vercel.app/"],  # later restrict to your Vercel domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,7 +30,7 @@ class JobRequest(BaseModel):
 
 
 @app.post("/generate-questions")
-def generate_questions(req: JobRequest):
+async def generate_questions(req: JobRequest):
     try:
         model = genai.GenerativeModel("gemini-2.5-flash")
 
@@ -47,7 +45,6 @@ Job Description:
         response = model.generate_content(prompt)
         text = response.text
 
-        # 👇 SAME logic as your JS, but in Python
         questions = [
             re.sub(r"^\d+\.\s*", "", line).strip()
             for line in text.split("\n")
