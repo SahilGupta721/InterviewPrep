@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
@@ -53,8 +53,7 @@ const Interview = () => {
 
     try {
       const formData = new FormData();
-      formData.append('file', videoFile);
-      if (resumeFile) formData.append('resume', resumeFile);
+
 
       // Eden AI expects questions as JSON array in "text" field
       formData.append('text', JSON.stringify(questionsArray));
