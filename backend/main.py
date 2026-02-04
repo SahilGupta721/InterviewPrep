@@ -19,7 +19,7 @@ app = FastAPI()
 # CORS (allow frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://interview-prep-dusky.vercel.app/"],  # later restrict to your Vercel domain
+    allow_origins=["https://interview-prep-dusky.vercel.app"],  # later restrict to your Vercel domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,7 +27,11 @@ app.add_middleware(
 
 class JobRequest(BaseModel):
     job_description: str
+#added default message for backend
 
+@app.get('/')
+def message():
+    return "InterviewPrep backend"
 
 @app.post("/generate-questions")
 async def generate_questions(req: JobRequest):

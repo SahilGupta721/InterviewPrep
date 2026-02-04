@@ -9,6 +9,7 @@ const JobDescription = () => {
   const [generatedQuestions, setGeneratedQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const getResponseForGivenPrompt = async () => {
     if (!jobDescription.trim()) {
@@ -20,7 +21,7 @@ const JobDescription = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:8000/generate-questions',
+        `${API_BASE_URL}/generate-questions`,
         {
           method: 'POST',
           headers: {
